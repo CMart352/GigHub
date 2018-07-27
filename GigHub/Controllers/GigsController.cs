@@ -134,5 +134,9 @@ namespace GigHub.Controllers
         }
 
 
+        public ActionResult Search()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
