@@ -1,24 +1,33 @@
-﻿using GigHub.Models;
-using GigHub.Repositories;
+﻿using GigHub.Core;
+using GigHub.Core.Repositories;
+using GigHub.Persistance;
+using GigHub.Persistance.Repositories;
+using GigHub.Persistence.Repositories;
 
-namespace GigHub.Persistance
+namespace GigHub.Persistence
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-       
-        public GigRepository Gigs { get; private set; }
-        public AttendanceRepository Attendance { get; private set; }
-        public FollowingRepository Following { get; private set; }
-        public GenreRepository Genres { get; private set; }
+
+        public IGigRepository Gigs { get; private set; }
+        public IAttendanceRepository Attendances { get; private set; }
+        public IGenreRepository Genres { get; private set; }
+        public IFollowingRepository Followings { get; private set; }
+        public IApplicationUserRepository Users { get; private set; }
+        public INotificationRepository Notifications { get; private set; }
+        public IUserNotificationRepository UserNotifications { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-            Gigs = new GigRepository(_context);
-            Attendance = new AttendanceRepository(_context);
-            Following = new FollowingRepository(_context);
-            Genres = new GenreRepository(_context);
+            Gigs = new GigRepository(context);
+            Attendances = new AttendanceRepository(context);
+            Genres = new GenreRepository(context);
+            Followings = new FollowingRepository(context);
+            Users = new ApplicationUserRepository(context);
+            Notifications = new NotificationRepository(context);
+            UserNotifications = new UserNotificationRepository(context);
         }
 
         public void Complete()
