@@ -1,10 +1,8 @@
 ﻿using GigHub.Core;
 using GigHub.Core.Repositories;
-using GigHub.Persistance;
 using GigHub.Persistance.Repositories;
-using GigHub.Persistence.Repositories;
 
-namespace GigHub.Persistence
+namespace GigHub.Persistance
 {
     public class UnitOfWork : IUnitOfWork
     {

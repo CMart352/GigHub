@@ -1,12 +1,11 @@
 ﻿using GigHub.Core.Models;
 using GigHub.Core.Repositories;
-using GigHub.Persistance;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace GigHub.Persistence.Repositories
+namespace GigHub.Persistance.Repositories
 {
     public class GigRepository : IGigRepository
     {

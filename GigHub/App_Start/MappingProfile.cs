@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using GigHub.Controllers.API;
 using GigHub.Core.Dtos;
 using GigHub.Core.Models;
 

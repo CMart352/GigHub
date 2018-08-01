@@ -1,7 +1,7 @@
-namespace GigHub.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
 
+namespace GigHub.Persistance.Migrations
+{
     public partial class PopulateGenreTable : DbMigration
     {
         public override void Up()

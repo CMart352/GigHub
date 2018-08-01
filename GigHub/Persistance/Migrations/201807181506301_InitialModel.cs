@@ -1,8 +1,7 @@
-namespace GigHub.Migrations
+using System.Data.Entity.Migrations;
+
+namespace GigHub.Persistance.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialModel : DbMigration
     {
         public override void Up()

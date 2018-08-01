@@ -1,10 +1,9 @@
-﻿using GigHub.Core.Models;
-using GigHub.Core.Repositories;
-using GigHub.Persistance;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using GigHub.Core.Models;
+using GigHub.Core.Repositories;
 
-namespace GigHub.Persistence.Repositories
+namespace GigHub.Persistance.Repositories
 {
     public class ApplicationUserRepository : IApplicationUserRepository
     {

@@ -9,14 +9,10 @@ namespace GigHub.Controllers
 {
     public partial class HomeController : Controller
     {
-        private ApplicationDbContext _context;
-        //private AttendanceRepository _attendanceRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public HomeController(UnitOfWork unitOfWork)
         {
-            _context = new ApplicationDbContext();
-            //_attendanceRepository = new AttendanceRepository(_context);
             _unitOfWork = unitOfWork;
         }
 
@@ -25,7 +21,7 @@ namespace GigHub.Controllers
             var upcomingGigs = _unitOfWork.Gigs.GetUpcomingGigs(query);
 
             var userId = User.Identity.GetUserId();
-            var attendances = _unitOfWork.Attendance.GetFutureAttendances(userId)
+            var attendances = _unitOfWork.Attendances.GetFutureAttendances(userId)
                 .ToLookup(a => a.GigId);
 
             var viewModel = new GigsViewModel

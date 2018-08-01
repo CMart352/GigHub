@@ -1,10 +1,9 @@
-﻿using GigHub.Persistance;
+﻿using GigHub.Core;
+using GigHub.Core.Models;
+using GigHub.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
-using GigHub.Core;
-using GigHub.Core.Models;
-using GigHub.Core.ViewModels;
 
 namespace GigHub.Controllers
 {
@@ -36,7 +35,7 @@ namespace GigHub.Controllers
                 UpcomingGigs = _unitOfWork.Gigs.GetGigsUserAttending(userId),
                 ShowActions = User.Identity.IsAuthenticated,
                 Heading = "Gigs I'm Attending",
-                Attendances = _unitOfWork.Attendance.GetFutureAttendances(userId).ToLookup(a => a.GigId)
+                Attendances = _unitOfWork.Attendances.GetFutureAttendances(userId).ToLookup(a => a.GigId)
             };
 
             return View("Gigs", viewModel);
@@ -149,7 +148,7 @@ namespace GigHub.Controllers
 
         public ActionResult Details(int id)
         {
-            var gig = _unitOfWork.Gigs.GetGigDetails(id);
+            var gig = _unitOfWork.Gigs.GetGig(id);
 
             if (gig == null)
             {
@@ -163,10 +162,10 @@ namespace GigHub.Controllers
                 var userId = User.Identity.GetUserId();
 
                 viewModel.IsAttending = 
-                    _unitOfWork.Attendance.GetAttendance(gig.Id, userId) != null;
+                    _unitOfWork.Attendances.GetAttendance(gig.Id, userId) != null;
 
                 viewModel.IsFollowing =
-                    _unitOfWork.Following.GetFollowing(userId, gig.ArtistId) != null;
+                    _unitOfWork.Followings.GetFollowing(userId, gig.ArtistId) != null;
             }
 
             return View("Details", viewModel);
