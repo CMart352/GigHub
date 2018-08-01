@@ -14,11 +14,12 @@ namespace GigHub.Tests.Controllers.Api
     [TestClass]
     public class GigsControllerTests
     {
-        private readonly GigsController _gigsController;
-        private readonly Mock<IGigRepository> _mockRepository;
-        private readonly string _userId;
+        private GigsController _gigsController;
+        private Mock<IGigRepository> _mockRepository;
+        private string _userId;
 
-        public GigsControllerTests()
+        [TestInitialize]
+        public void TestInitialize()
         {
             _mockRepository = new Mock<IGigRepository>();
 
